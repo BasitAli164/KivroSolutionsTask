@@ -19,6 +19,7 @@ app.post('/contact',(req,res)=>{
     const {name,email,message}=req.body
     console.log("Received contact form data:")
     console.log(`Name:${name}\nEmail:${email}\nMessage:${message}`)
+    return res.json({name:name,email:email,message:message})
 
 })
 
