@@ -17,7 +17,6 @@ form.addEventListener('submit', async (e) => {
     });
 
     const result = await response.text();
-    alert(result);
 
     form.reset();
   } catch (error) {
