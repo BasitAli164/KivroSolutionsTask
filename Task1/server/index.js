@@ -6,8 +6,14 @@ dotenv.config()
 const app=express();
 app.use(cors())
 app.use(express.json())
+
 app.get('/',(req,res)=>{
     res.json({message:"Talking from server"})
+    
+})
+
+app.post('/contact',(req,res)=>{
+    const {name,email,message}=req.body
     
 })
 
