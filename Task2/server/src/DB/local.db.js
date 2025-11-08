@@ -8,6 +8,9 @@ const databaseConnection= async()=>{
         console.log(`Database Connect at ${process.env.DATABASE_URI} Successfully... `)
         
     } catch (error) {
+        console.log(`Database connection error: ${error}`)
         
     }
 }
+
+export default databaseConnection
