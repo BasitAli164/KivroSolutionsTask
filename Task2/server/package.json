@@ -7,7 +7,7 @@
     "start":"nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Basit Ali",
   "license": "ISC",
   "description": "",
   "dependencies": {
