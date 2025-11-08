@@ -14,13 +14,14 @@ const addBook=async (req,res)=>{
             totalCopies
 
         })
+        console.log("Book is:",book)
 
         await book.save()
         res.status(201).json({
             status:201,
             message:"Book added successfully",
             bookDetail:book,
-            
+
         })
 
         
