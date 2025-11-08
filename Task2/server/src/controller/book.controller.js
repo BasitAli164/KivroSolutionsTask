@@ -29,7 +29,7 @@ export const addBook=async (req,res)=>{
         console.log("Error during adding book",error)
         return res.status(500).json({
             status:500,
-            message:"Server side error.....!",
+            message:"Internal Server Error",
             err:error,
         })
         
@@ -56,7 +56,7 @@ export const getAllBook=async(req,res)=>{
         console.log("Error facing during getting all book:",error)
         return res.status(500).json({
             status:500,
-            message:"Server side error",
+            message:"Internal Server Error",
             err:error
         })
         
@@ -85,7 +85,7 @@ export const getBookById=async(req,res)=>{
         console.log("Facing error during book getting by id:",error)
         return res.status(500).json({
             status:500,
-            message:"Internal Server Error"
+            message:"Internal Server Error",
             err:error
         })
     }
