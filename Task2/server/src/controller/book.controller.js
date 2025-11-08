@@ -90,3 +90,31 @@ export const getBookById=async(req,res)=>{
         })
     }
 }
+
+export const deleteBookById=async(req,res)=>{
+    const {id}=req.params
+    try {
+        const delBook=await Book.findByIdAndDelete(id)
+        if(!delBook){
+            return res.status(400).json({
+                status:400,
+                message:`Book is not found of this id: ${id}`
+            })
+        }
+
+        return res.status(200).json({
+            status:200,
+            message:`Successfully delete the book with id:${id}`,
+            delBookDetail:delBook
+        })
+        
+    } catch (error) {
+        console.log("Facing error during delete book")
+        return res.status(500).json({
+            status:500,
+            message:"Internal Server Error",
+            err:error
+        })
+        
+    }
+}
