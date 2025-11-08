@@ -69,10 +69,24 @@ export const getBookById=async(req,res)=>{
         const book=await Book.findById(id)
         console.log("Get book by it id: ",book)
         if(!book){
-            return res.status(400).json({})
+            return res.status(400).json({
+                status:400,
+                message:"Book not found"
+            })
         }
+
+        return res.status(200).json({
+            status:200,
+            message:"Book detail is:",
+            bookDetail:book,
+        })
         
     } catch (error) {
-        
+        console.log("Facing error during book getting by id:",error)
+        return res.status(500).json({
+            status:500,
+            message:"Internal Server Error"
+            err:error
+        })
     }
 }
