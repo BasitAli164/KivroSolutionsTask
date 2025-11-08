@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
-import databaseConnection from './src/DB/local.db'
-import app from './app';
+import databaseConnection from './src/DB/local.db.js'
+import app from './app.js';
 dotenv.config()
 
 
