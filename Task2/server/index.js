@@ -9,6 +9,13 @@ const port=process.env.PORT || 4000;
 databaseConnection()
 .then(()=>{
     app.listen(port,()=>{
-        console.log(object)
+        console.log(`Server is running at: http://localhost:${port}`)
+        app.on('Error:',(error)=>{
+            console.log("Error:",error)
+            throw error
+        })
     })
+})
+.catch(()=>{
+    console.log("Mongo DB connections error !!")
 })
