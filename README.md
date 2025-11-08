@@ -10,3 +10,13 @@ using a POST request.
 ● Frontend: HTML form with input fields 
 ● Backend: Express.js server with a POST route (/contact) 
 ● Console log submitted data on the server 
+
+
+# Task 2 – REST API with Database 
+Goal: Learn how to build and connect APIs to a database. 
+Description: 
+Build a Book Management API using Express.js and MongoDB. 
+Requirements: 
+● Routes: /books (GET), /books/:id (GET), /books (POST), /books/:id (DELETE) 
+● Use Mongoose for schema 
+● Return JSON data
