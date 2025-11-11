@@ -1,44 +1,92 @@
 import React, { useState } from "react";
 
-const BookForm = ({ onAddBook }) => {
-  const [form, setForm] = useState({ title: "", author: "" });
+const BookForm = ({ onAdd }) => {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    bookUniqeNo: "",
+    description: "",
+    publishedYear: "",
+    totalCopies: "",
+  });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.title || !form.author) return;
-    onAddBook(form);
-    setForm({ title: "", author: "" });
+    onAdd(formData);
+    setFormData({
+      title: "",
+      author: "",
+      bookUniqeNo: "",
+      description: "",
+      publishedYear: "",
+      totalCopies: "",
+    });
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow p-4 rounded mb-6 w-full max-w-md"
+      className="bg-white shadow-md rounded-lg p-6 mb-8"
     >
-      <h2 className="text-lg font-semibold mb-3">Add New Book</h2>
-      <input
-        type="text"
-        name="title"
-        value={form.title}
+      <h2 className="text-xl font-semibold mb-4 text-gray-700">Add New Book</h2>
+      <div className="grid md:grid-cols-2 gap-4">
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          placeholder="Book Title"
+          className="border p-2 rounded-md"
+          required
+        />
+        <input
+          type="text"
+          name="author"
+          value={formData.author}
+          onChange={handleChange}
+          placeholder="Author"
+          className="border p-2 rounded-md"
+          required
+        />
+        <input
+          type="text"
+          name="bookUniqeNo"
+          value={formData.bookUniqeNo}
+          onChange={handleChange}
+          placeholder="Book Unique No"
+          className="border p-2 rounded-md"
+        />
+        <input
+          type="number"
+          name="publishedYear"
+          value={formData.publishedYear}
+          onChange={handleChange}
+          placeholder="Published Year"
+          className="border p-2 rounded-md"
+        />
+        <input
+          type="number"
+          name="totalCopies"
+          value={formData.totalCopies}
+          onChange={handleChange}
+          placeholder="Total Copies"
+          className="border p-2 rounded-md"
+        />
+      </div>
+      <textarea
+        name="description"
+        value={formData.description}
         onChange={handleChange}
-        placeholder="Book Title"
-        className="border p-2 w-full mb-3 rounded"
-      />
-      <input
-        type="text"
-        name="author"
-        value={form.author}
-        onChange={handleChange}
-        placeholder="Author Name"
-        className="border p-2 w-full mb-3 rounded"
-      />
+        placeholder="Description"
+        className="border p-2 rounded-md mt-4 w-full"
+      ></textarea>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
       >
         Add Book
       </button>
