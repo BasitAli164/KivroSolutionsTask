@@ -12,27 +12,22 @@ export const addBook=async (req,res)=>{
             description,
             publishedYear,
             totalCopies
-
         })
         console.log("Book is:",book)
-
         await book.save()
         res.status(201).json({
             status:201,
             message:"Book added successfully",
             bookDetail:book,
 
-        })
-
-        
+        })    
     } catch (error) {
         console.log("Error during adding book",error)
         return res.status(500).json({
             status:500,
             message:"Internal Server Error",
             err:error,
-        })
-        
+        })        
     }
 }
 
