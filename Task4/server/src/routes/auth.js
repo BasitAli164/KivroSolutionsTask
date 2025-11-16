@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
 
   try {
     const existing = await User.findOne({ email: email.toLowerCase() });
-    if (existing) return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+    if (existing) return res.status(400).json({ errors: [{ msg: `User already exists with this email ${existing.email}` }] });
 
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(password, salt);
@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '1d' });
 
-    return res.json({ token });
+    return res.json({ user });
   } catch (err) {
     console.error('Register error:', err.message);
     return res.status(500).send('Server error');
@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '1d' });
 
-    return res.json({ token });
+    return res.json({user });
   } catch (err) {
     console.error('Login error:', err.message);
     return res.status(500).send('Server error');
