@@ -20,7 +20,7 @@ if (!process.env.JWT_SECRET) {
 await connectDB(process.env.MONGO_URI);
 
 // middlewares
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 
 // routes
