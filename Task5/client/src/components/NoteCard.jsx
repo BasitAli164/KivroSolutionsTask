@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import React from "react";
 const NoteCard = ({ note, onDelete }) => {
   return (
     <div className="border p-4 rounded shadow-md bg-white">
